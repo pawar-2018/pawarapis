@@ -1,0 +1,21 @@
+web:
+  build: .
+  command: python app.py
+  environment:
+    - AWS_DEFAULT_REGION=us-east-1
+    - AWS_ACCESS_KEY_ID=AKID
+    - AWS_SECRET_ACCESS_KEY=SECRET
+    - ENV=local
+    - PYTHONUNBUFFERED=0
+  links:
+    - dynamodb:dynamodb-local
+  ports:
+    - "5000:5000"
+  volumes:
+    - .:/code
+dynamodb:
+  image: kraynezero/aws-dynamodb-local
+  ports:
+    - "8000:8000"
+  volumes:
+    - ./dynamodb-local-setup:/bootstrap
