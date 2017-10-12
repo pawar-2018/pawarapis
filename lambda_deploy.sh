@@ -15,7 +15,7 @@ virtualenv expenditures
 source expenditures/bin/activate
 
 # Install packages
-pip install -r expenditures/requirements.txt
+pip install -r expenditures/requirements/dev-prod.txt
 
 # Start Zappa Update
 python appendFirebaseCert.py
